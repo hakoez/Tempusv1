@@ -1,0 +1,10 @@
+^C:\USERS\HAKAN\TEMPUSV1\BUILD\CMAKEFILES\3E2BCEFD9927428FC8031B2E493AF1EE\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/hakan/Tempusv1 -BC:/Users/hakan/Tempusv1/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/hakan/Tempusv1/build/Tempus.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

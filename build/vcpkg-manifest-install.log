@@ -1,0 +1,99 @@
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.42.34433/bin/Hostx64/x64/cl.exe
+The following packages will be built and installed:
+  * egl-registry:x64-windows@2024-01-25
+    fmt:x64-windows@11.0.2#1
+    glfw3:x64-windows@3.4#1
+    imgui[core,glfw-binding,opengl3-binding]:x64-windows@1.91.6
+    implot:x64-windows@0.16
+    opengl:x64-windows@2022-12-04#3
+  * opengl-registry:x64-windows@2024-02-10#1
+  * vcpkg-cmake:x64-windows@2024-04-23
+  * vcpkg-cmake-config:x64-windows@2024-05-23
+Additional packages (*) will be modified to complete this operation.
+Restored 9 package(s) from C:\Users\hakan\AppData\Local\vcpkg\archives in 125 ms. Use --debug to see more details.
+Installing 1/9 vcpkg-cmake-config:x64-windows@2024-05-23...
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 3.22 ms
+vcpkg-cmake-config:x64-windows package ABI: 1611d2a9da5c146a0cfeef4d29a30947177dd6f24139ede1d44bd507e052984d
+Installing 2/9 vcpkg-cmake:x64-windows@2024-04-23...
+Elapsed time to handle vcpkg-cmake:x64-windows: 8.15 ms
+vcpkg-cmake:x64-windows package ABI: e61c07ecce86d566b98cfdbe26a7b51500c25f01c9602b70ee542fa38e22644e
+Installing 3/9 fmt:x64-windows@11.0.2#1...
+Elapsed time to handle fmt:x64-windows: 33.3 ms
+fmt:x64-windows package ABI: a74e811d86ae5368c82f5775597f1232ef3eef3bb3e1734eeb03195a763e92f2
+Installing 4/9 glfw3:x64-windows@3.4#1...
+Elapsed time to handle glfw3:x64-windows: 6.14 ms
+glfw3:x64-windows package ABI: 8cd28e4fceb558187623f8bbabf0246de25b13fe2007377cf94d25956083d820
+Installing 5/9 imgui[core,glfw-binding,opengl3-binding]:x64-windows@1.91.6...
+Elapsed time to handle imgui:x64-windows: 37.3 ms
+imgui:x64-windows package ABI: 51bfa871c32d3a9db2052cc5fabb310a2d5202f0e78c3382db654e409609bfb7
+Installing 6/9 implot:x64-windows@0.16...
+Elapsed time to handle implot:x64-windows: 29.9 ms
+implot:x64-windows package ABI: 1f53d24692e220dac22f0296c3db171f1bf7dddb6187a4c1fcb950bd11262ce8
+Installing 7/9 egl-registry:x64-windows@2024-01-25...
+Elapsed time to handle egl-registry:x64-windows: 4.54 ms
+egl-registry:x64-windows package ABI: 75e8b7f39702fab32e8339762dd6dd3df670fdab25bcc9f69b6fffc20286e782
+Installing 8/9 opengl-registry:x64-windows@2024-02-10#1...
+Elapsed time to handle opengl-registry:x64-windows: 57.5 ms
+opengl-registry:x64-windows package ABI: 47c4dcbc5aedf85602aa0b3703f775f8a59fedb2c2fabd352da5deef93e735b4
+Installing 9/9 opengl:x64-windows@2022-12-04#3...
+Elapsed time to handle opengl:x64-windows: 6.34 ms
+opengl:x64-windows package ABI: 6ba9e03388e9ae4dcc9f94df8da232d446784152e7e2ba955c8aaa28c3f37b05
+Total install time: 186 ms
+The package fmt provides CMake targets:
+
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt)
+
+    # Or use the header-only version
+    find_package(fmt CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE fmt::fmt-header-only)
+
+glfw3 provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(glfw3 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE glfw)
+
+glfw3 provides pkg-config modules:
+
+  # A multi-platform library for OpenGL, window and input
+  glfw3
+
+imgui provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(imgui CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE imgui::imgui)
+
+implot provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(implot CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE implot::implot)
+
+The package opengl is compatible with built-in CMake targets via CMake v3.7 and prior syntax
+
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(main PRIVATE ${OPENGL_LIBRARIES})
+    target_include_directories(main PRIVATE ${OPENGL_INCLUDE_DIR})
+
+and the CMake v3.8 and beyond imported target syntax
+
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(main PRIVATE OpenGL::GL)
+
+introduction of various components
+
+    find_package(OpenGL REQUIRED COMPONENTS GL      # v3.8
+                                            GLU     # v3.8
+                                            GLX     # v3.10
+                                            EGL     # v3.10
+                                            OpenGL) # v3.10
+
+The OpenGL SDK is highly platform dependent and is usually an OS component. It's not realistic to build from source for every platform.
+
+    WINDOWS: is part of the Windows SDK which this package installs.
+    LINUX: the SDK may be installed from your distro's repo or from 3rd parties manually. There are too many to count.
+    APPLE: consult your distribution vendor on the state of OpenGL support: https://support.apple.com/en-us/HT202823
+
